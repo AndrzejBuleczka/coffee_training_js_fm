@@ -8,6 +8,10 @@ const Router = {
       });
     });
 
+    window.addEventListener("popstate", (event) => {
+      Router.go(event.state.route, false);
+    })
+
     //check the initial URL
     Router.go(location.pathname);
   },
