@@ -10,7 +10,7 @@ const Router = {
 
     window.addEventListener("popstate", (event) => {
       Router.go(event.state.route, false);
-    })
+    });
 
     //check the initial URL
     Router.go(location.pathname);
@@ -23,17 +23,14 @@ const Router = {
     let pageElement = null;
     switch (route) {
       case "/":
-        pageElement = document.createElement("h1");
-        pageElement.textContent = "Menu";
+        pageElement = document.createElement("menu-page");
         break;
       case "/order":
-        pageElement = document.createElement("h1");
-        pageElement.textContent = "Your Order";
+        pageElement = document.createElement("order-page");
         break;
       default:
         if (route.startsWith("/product-")) {
-          pageElement = document.createElement("h1");
-          pageElement.textContent = "Details";
+          pageElement = document.createElement("details-page");
           pageElement.dataset.productId = route.substring(
             route.lastIndexOf("-") + 1
           );
@@ -46,9 +43,7 @@ const Router = {
     }
 
     window.scrollX = 0;
-    window.scrollY = 0;
   }
 };
-
 
 export default Router;
